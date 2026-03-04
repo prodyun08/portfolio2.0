@@ -1,0 +1,220 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    padding-top: 70px;
+    background: rgba(0,0,0,0.85);
+backdrop-filter: blur(10px);
+}
+
+.nav {
+    position: fixed;   /* ADD THIS */
+    top: 0;            /* ADD THIS */
+    left: 0;           /* ADD THIS */
+    width: 100%;       /* ADD THIS */
+    z-index: 1000;     /* ADD THIS */
+
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+    border-bottom: 1px solid #333;
+    background-color: #000;
+}
+
+.nav {
+  transition: transform 0.35s ease-in-out;
+}
+
+.navHidden {
+  transform: translateY(-100%);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    background: transparent; 
+    border-radius: 8px; 
+    padding: 5px 10px;
+    transition: all 0.3s ease;
+}
+
+.logo:hover {
+    background-color: transparent; 
+}
+
+.logo h1 {
+    font-size: 28px;
+    margin: 0;
+    color: white; 
+    z-index: 1; /* Ensure the text is above the background when hovered */
+}
+
+.logo img {
+    height: 40px;        /* Set a specific height for the tower */
+    width: auto;         /* Keeps the proportions correct */
+    transition: transform 0.3s ease; /* Smooth transition for the hover effect */
+    margin-left: -15px;
+    z-index: 0; /* Ensure the image is above the background when hovered */
+}
+
+/* Subtle animation: Make the tower "straighten" or tilt slightly on hover */
+.logo:hover img {
+    transform: rotate(-5deg); /* Since it's the leaning tower, playing with the angle is fun! */
+}
+
+
+.links {
+    display: flex;
+    gap: 2rem;
+    margin-right: auto; /* This pushes the .social div to the far right */
+}
+
+.links a {
+    text-decoration: none;
+    color: rgb(136, 133, 133);
+    font-weight: 200;
+    transition: color 0.3s;
+    font-size: 17px;
+}
+
+.links a:hover {
+    color: #646cff;
+}
+
+.social {
+    display: flex;
+    gap: 0.75rem; /* Tighter gap like the image */
+    align-items: center;
+}
+
+.social a {
+    text-decoration: none;
+    border-radius: 10px; /* Softer rounded corners */
+    padding: 10px 20px;  /* Better vertical/horizontal balance */
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+.githubBtn {
+    background-color: #22ee88a6 !important; /* Vibrant Cyan/Greenish tint */
+    color: #000000 !important; /* Dark text for high contrast */
+}
+
+.githubBtn:hover {
+    background-color: #22ee88 !important; /* Slightly darker on hover */
+    transform: translateY(-1px); /* Small lift effect */
+}
+
+.devIcon {
+    background-color: #1a1a1a !important; /* Very dark grey/black */
+    color: #ffffff !important;
+    border: 1px solid #333; /* Subtle border to define shape */
+}
+
+.devIcon img {
+    height: 30px;
+    color: #fffdfd;
+    width: auto;
+    margin-right: 5px;
+    vertical-align: middle; /* Align the icon with the text */
+    background: transparent;
+}
+
+.devIcon:hover {
+    background-color: #252525 !important;
+    border-color: #444;
+}
+
+.devIcon:hover img {
+    filter: brightness(1.2); /* Slightly brighten the icon on hover */
+    transform: rotate(-3deg);
+}
+
+
+/* // Responsive Design */
+/* Container for links and social to group them on mobile */
+.leftSection {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.navContent {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    margin-left: 40px; /* Adds space between "Portfolio" and "Home" */
+}
+
+/* Hamburger Icon */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.bar, .barOpen {
+    width: 22px;
+    height: 2px;
+    background-color: white;
+    transition: 0.3s;
+}
+
+/* Mobile & Tablet Styles */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+.navContent {
+        display: none; 
+        flex-direction: column;
+        position: absolute;
+        top: 70px; /* Use the exact height of your navbar for a perfect snap */
+        left: 0;
+        width: 100%;
+        background-color: #000;
+        padding: 30px 0; /* More padding makes it look premium */
+        gap: 2rem;
+        border-bottom: 1px solid #333; 
+        z-index: 100;
+    }
+
+.navContent.active {
+        display: flex;
+    }
+.links {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: flex-start; /* Keeps them aligned to the left of the screen */
+        padding-left: 10%;      /* Gives them a consistent indent */
+        margin-right: 0;        /* IMPORTANT: Removes the desktop "push" effect */
+        width: 100%;
+    }
+
+.social {
+        width: 100%;
+        justify-content: flex-start; /* Align buttons with the links */
+        padding-left: 10%;
+        padding-bottom: 20px;
+    }
+
+    /* Animation for X */
+    .barOpen:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .barOpen:nth-child(2) { opacity: 0; }
+    .barOpen:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+}
+

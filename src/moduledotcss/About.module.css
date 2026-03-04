@@ -1,0 +1,151 @@
+/* fonts add section  */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+
+
+:root {
+    --kolapata-color: #b3d300; /* DEFINE KOLAPATA COLOR AS A CSS VARIABLE */
+    --sada-color: #ffffff; /* DEFINE SADA COLOR AS A CSS VARIABLE */
+    --holud-color: #ffcc00; /* DEFINE HOLUD COLOR AS A CSS VARIABLE */
+    --green-color: #07cf6b; /* DEFINE GREEN COLOR AS A CSS VARIABLE */
+    --title-color: #e0dddd; /* DEFINE TITLE COLOR AS A CSS VARIABLE */
+    --dec-color:#b1aeae; /* DEFINE DEC COLOR AS A CSS VARIABLE */
+}
+
+
+.timeSection {
+    width: 100%;
+    display: flex;
+    flex-direction: column;  /* STACK SECTIONS VERTICALLY */
+    align-items: center;     /* CENTER SECTIONS HORIZONTALLY */
+    justify-content: flex-start; /* START CONTENT FROM TOP */
+    /* background-color: #1a1a1a;  */
+    color: var(--sada-color); /* SADA COLOR FOR TEXT */
+    padding-top: 10px;       /* SPACE FROM TOP OF SCREEN */
+}
+
+.container1 {
+    width: 100%;
+    max-width: 800px;        /* YOUR REQUESTED MAX WIDTH */
+    padding: 0 20px;
+    display: flex;
+    flex-direction: row;     
+    align-items: center;     
+    justify-content: space-between; /* KEEPS GREETING LEFT, CLOCK RIGHT */
+    margin-bottom: 40px;     /* SPACE BEFORE NEXT SECTION */
+}
+
+.digitalClock {
+    font-family: 'digital-7 mono', monospace;
+    color: var(--kolapata-color); /* KOLAPATA COLOR FOR HIGHLIGHT */
+
+}
+.highlight {
+    font-family: "Bebas Neue", sans-serif;
+    color: var(--kolapata-color); /* KOLAPATA COLOR FOR HIGHLIGHT */
+}
+
+
+
+/* Add this for your next section below */
+.container2 {
+    width: 100%;
+    max-width: 800px;
+    padding: 0 20px;
+}
+.titlescr{
+    color: var(--title-color); /* SADA COLOR FOR HIGHLIGHT */
+    gap: 20px;
+    font-size: 50px;
+    font-family: "Lato", system-ui, sans-serif
+;
+
+}
+.name{
+    color: var(--green-color);
+    font-size: 50px;
+    font-family: "Lato", system-ui, sans-serif
+;
+
+}
+
+.signaturePose{
+    height: 40px;
+    padding-left: 7px;
+    justify-content: center;
+}
+
+/* Ensure the section itself is centered on the page */
+.nextSection {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; /* Adjust spacing between container2 and container3 */
+}
+
+.container3 {
+    width: 100%;
+    max-width: 800px;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    /* Changed from center to flex-start to allow left-alignment of text */
+    align-items: flex-start; 
+    justify-content: center;
+}
+
+.safetyFirst {
+    width: 50%;       /* Set to 100% to fill the 800px width for a "good look" */
+    max-width: 100%;   /* Ensures it doesn't overflow */
+    height: auto;
+    border-radius: 12px;
+    display: block;
+    margin: 0 auto 20px auto; /* "auto" left/right centers the GIF specifically */
+}
+.titleAbout {
+    color: var(--title-color);
+    font-size: 26px;
+    font-family: "Lato", sans-serif;
+    margin-top: 20px;
+    text-align: left; /* Explicitly align text left */
+    width: 100%;      /* Ensures the text box spans the width to allow alignment */
+}
+
+.aboutDesc {
+    color: var(--sada-color);
+    font-size: 18px;
+    line-height: 1.6;
+    font-family: "Lato", sans-serif;
+    text-align: left;
+    width: 100%;
+    margin-top: 10px;
+    color: var(--dec-color);
+    text-align: justify;
+}
+
+.skillHead{
+    color: var(--title-color);
+    font-size: 22px;
+    font-family: "Lato", sans-serif;
+    margin-top: 20px;
+    text-align: left; /* Explicitly align text left */
+    width: 100%;      /* Ensures the text box spans the width to allow alignment */
+}
+
+.skillsShow{
+    display: flex;
+    flex-wrap: wrap; /* ALLOWS SKILLS TO WRAP TO NEXT LINE IF NEEDED */
+    margin-top: 10px;
+}
+
+.skillTec{
+    background-color: color-mix(in oklab,var(--green-color)10%,transparent);
+    color: var(--green-color);
+    border-radius: 6px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 8px 12px;  
+    font-size: 15px;
+}

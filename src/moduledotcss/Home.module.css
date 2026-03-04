@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+.hero {
+  background-color: #000;
+  color: #fff;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden; /* prevent internal overflow */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  border-bottom: 1px solid #333;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+.container {
+  max-width: 1100px;
+  width: 100%;
+}
+
+.title {
+  font-size: 2rem; /* Adjust based on preference */
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  margin-bottom: 2rem;
+  color: #444; /* Darker color for "The future of development" */
+}
+
+.title h1{
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.02em;
+}
+.title , .highlightRow {
+  /* This creates a vertical gradient from White to your Mint Green */
+  background: linear-gradient(180deg, #969292 30%, #2ED59E 100%);
+    /* Clips the gradient to the text only */
+  -webkit-background-clip: text;
+  background-clip: text;
+    /* Makes the default text color transparent so the gradient shows */
+  -webkit-text-fill-color: transparent;
+    line-height: 1.2;
+  font-weight: bold;
+}
+
+.highlightRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 2rem;
+}
+
+/* Sub-text styling */
+.subtitle {
+  color: #888;
+  font-size: 0.7rem;
+  line-height: 1.1;
+  max-width: 600px;
+  margin: 0 auto 1rem auto;
+}
+
+/* Button with a subtle glow */
+.ctaButton {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #333;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 255, 150, 0.1);
+}
+
+.ctaButton:hover {
+  border-color: #00ffaa;
+  box-shadow: 0 0 25px rgba(0, 255, 150, 0.3);
+}
+
+/* Placeholder for Icons */
+.fingerprintcont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent !important;
+    padding: 10px; /* Gives space for the glow to expand */
+}
+
+.fingerGlow {
+    background: transparent !important;
+    /* This ensures the animation runs every 3 seconds */
+    animation: biometricPulse 3s ease-in-out infinite;
+}
+
+@keyframes biometricPulse {
+    0%, 100% {
+        /* No glow at start and end */
+        filter: drop-shadow(0 0 0px rgba(46, 213, 158, 0));
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        /* Intense glow in the middle of the 3s cycle */
+        /* Use the hex color of your fingerprint here */
+        filter: drop-shadow(0 0 15px #2ED59E); 
+        transform: scale(1.05); /* Slight pulse effect */
+        opacity: 1;
+    }
+}
+
+
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 0 16px;
+  }
+
+  .title {
+    font-size: 1.9rem;
+    line-height: 1.2;
+  }
+
+  .highlightRow {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .fingerprintcont img {
+    width: 55px;
+    height: 55px;
+  }
+
+  .highlightRow span:last-child {
+    width: 70px;
+    height: 70px;
+  }
+
+  .subtitle {
+    font-size: 0.75rem;
+    line-height: 1.5;
+    width: 100%;
+  }
+
+  .ctaButton {
+    width: auto;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    font-size: 0.65rem;
+  }
+}
+
+
+/* About Section  */
+
+.aboutSection {
+  /* background-color: #fff; */
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  color: #333;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.aboutSection h1 {
+  font-size: 1.7rem;
+  margin-bottom: 20px;
+}
+
+.intro{
+  background: linear-gradient(180deg, #969292 30%, #2ED59E 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+
+.Bage{
+  font-size: 20px;
+  line-height: 1.6;
+  color: #03b839;
+  margin-top: -15px;
+  margin-bottom: 20px;
+  align-items: center;
+  font-weight: 600;
+}
+.aboutDesc{
+  font-size: 20px;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+  color: #555;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+.skillsSection{
+  display: flex;
+  flex-direction: row;
+  /* gap: 0px; */
+  align-items: center;
+  justify-content: space-between;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.skillsSection img{
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+}
+
+.skills{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.skills:hover{
+  cursor: pointer;
+  color: #2ED59E;
+}
+
+
+.more{
+  display: flex;
+  gap: 5px;
+  margin-right: 10px;
+  align-items: center;
+  background: transparent;
+  text-decoration: none;
+
+}
+
+.more p{
+  font-size: 15px;
+}
+
+.more:hover{
+  cursor: pointer;
+}
+
+.more:hover p{
+  font-weight: 600;
+  transition: color 0.4s ease, transform 0.3s ease;
+  transform: scale(1.05);
+}
+
+/* Optional color animation continuously */
+@keyframes colorChange {
+  0% { color: #007bff; }
+  50% { color: #ff5722; }
+  100% { color: #00c458; }
+}
+
+.more p{
+  animation: colorChange 3s infinite;
+}
+
+.more:hover i{
+  transform: rotate(-45deg);
+  transition: transform 0.3s ease;
+  background: transparent;
+}
