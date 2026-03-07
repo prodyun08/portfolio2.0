@@ -1,0 +1,128 @@
+:root {
+    --bg-color:none; /* Deep blue background */
+    --text-color: oklch(92.19% 0 0); /* White text */
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
+  color: white;
+  font-size: 30px;
+}
+
+body {
+  background-color: black; /* Put the background only on the body */
+}
+
+.projects {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.projects h2 {
+    color: var(--text-color);
+    font-size: 26px;
+    margin-bottom: 30px;
+}
+
+.projectList {
+    display: grid;
+    /* Forces 3 columns in one line */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; /* Slightly reduced gap to save space */
+}
+
+.projectItem {
+    background-color: var(--bg-color);
+    border-radius: 15px; /* Slightly smaller radius for a tighter look */
+    border: 1px solid #90a1b9;
+    padding: 20px; /* Reduced padding from 30px to 20px */
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform 0.3s ease;
+}
+
+.projectItem h3 {
+    color: #ffffff;
+    font-size: 18px; /* Reduced from 20px */
+    margin: 5px 0;
+    background-color: transparent;
+}
+
+.projectItem:hover {
+    transform: translateY(-5px);
+}
+
+/* Top row with Folder and Action Icons */
+.topIcons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+}
+
+.folderIcon {
+    width: 40px;
+    height: auto;
+    background-color: transparent;
+}
+
+.actionIcons {
+    display: flex;
+    gap: 15px;
+    background-color: transparent;
+}
+
+.actionIcons a img {
+    opacity: 0.8;
+    background-color: transparent;
+}
+.details{
+    background-color: transparent;
+}
+
+.description {
+    color: #aab4cc;
+    font-size: 14px; /* Reduced from 20px for better readability in small frames */
+    line-height: 1.5;
+    margin-bottom: 5px;
+    background-color: transparent;
+}
+
+/* Tech Stack Tags */
+.techStack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    background-color: transparent;
+}
+
+.techTag {
+    background-color: #2a3d66;
+    color: #ffffff;
+    padding: 4px 10px; /* Smaller padding */
+    border-radius: 6px;
+    font-size: 12px; /* Reduced from 16px */
+    font-weight: 500;
+}
+
+.folderIcon {
+    width: 32px; /* Reduced from 40px */
+    height: auto;
+    background-color: transparent;
+}
+
+.actionIcons img {
+    width: 20px; /* Explicit width for action icons */
+    opacity: 0.8;
+    background-color: transparent;
+}
+
+@media (max-width: 900px) {
+    .projectList {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../moduledotcss/About.module.css';
+import Timeline from '../jsx/Timeline';
 
 const About = () => {
   const [time, setTime] = useState(new Date());
@@ -104,14 +105,15 @@ const About = () => {
     <p className={styles.skillHead}>Languages</p>
     <div className={styles.skillsShow}>
       <span className={styles.skillTec}>Python</span>
-      <span className={styles.skillTec}>C</span>
-      <span className={styles.skillTec}>C++</span>
+      <span className={styles.skillTec}>React JS</span>
+      <span className={styles.skillTec}>Java</span>
       <span className={styles.skillTec}>JavaScript</span> 
     </div>
   </div>
 </section>
 <section className={styles.Education}>
-
+  <h3 className={styles.titleAbout}>Education Background</h3>
+    <Timeline />
 </section>
   </>
   );

@@ -1,19 +1,21 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './jsx/Navbar';
 import Home from './jsx/Home';
 import About from './pages/About';
 import Projects from './pages/Projects';
 import Blogs from './pages/Blogs';
 import Footer from './jsx/Footer';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import ScrollToTop from './jsx/ScrollToTop'; //
+import ScrollToTop from './jsx/ScrollToTop'; 
+import Dashboard from './pages/BlogDashboard';
+import Login from './pages/Login';
+import BlogPost from './pages/BlogPost'; 
+import NotFound from './pages/NotFound'; // You'll create this simple page
 
 const App = () => {
   return (
     <BrowserRouter>
-      {/* CRITICAL: You must include the tag here for it to work */}
       <ScrollToTop /> 
-      
       <div className="app-container">
         <Navbar />
         <Routes>
@@ -21,6 +23,13 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/blogs" element={<Blogs />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          {/* Changed :id to :slug to match our new DB structure */}
+          <Route path="/blog/:slug" element={<BlogPost />} />
+          
+          {/* SECURITY: If anyone types a wrong URL, they go here */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </div>

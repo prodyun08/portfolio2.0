@@ -9,6 +9,7 @@ import Staad from '../assets/staad-software.svg';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 
+
 const Home = () => {
   return (
     <>
