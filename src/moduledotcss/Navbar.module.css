@@ -16,7 +16,6 @@ backdrop-filter: blur(10px);
     left: 0;           /* ADD THIS */
     width: 100%;       /* ADD THIS */
     z-index: 1000;     /* ADD THIS */
-
     height: 70px;
     display: flex;
     align-items: center;

@@ -1,0 +1,282 @@
+/* Main Wrapper */
+.chatbotWrapper {
+position: fixed;
+    bottom: 10px;
+    right: 10px;
+    transform: translate(-50%, -50%);
+    size: 10px;
+    z-index: 1000;  
+}
+
+
+.icon {
+  width: 45px;
+  height: 45px;
+  /* If your SVG is black and you want it to be a different color, 
+     you might need to use 'filter' or ensure the SVG file itself is colored correctly */
+  display: block;
+  background-color: transparent;
+}
+
+.closeText {
+  font-size: 40px;
+  color: red;
+  font-weight: bolder;
+  background-color: transparent;
+}
+
+/* Floating Launcher Button */
+.launcher {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #07cf6b;
+  color: #000;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(7, 207, 107, 0.4);
+  transition: transform 0.2s ease; 
+}
+
+.launcher:hover {
+  transform: scale(1.05); /* Slight grow effect instead of moving position */
+}
+.floatingWindow {
+  position: absolute;
+  bottom: 75px;
+  right: 0;
+  width: 320px;
+  height: 480px;
+  background: #111;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+  border: 1px solid #333;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- FIXED HEADER SECTION --- */
+.header {
+  background: #000 ;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 60px;
+}
+
+.headerInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: transparent;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  color: blue;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.statusContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  background-color: transparent;
+}
+
+.botName {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+  color: #ffffff91 !important; /* Forces black text on the green header */
+  background-color: transparent !important; /* Removes forced black background */
+}
+.botStatus {
+  font-size: 11px;
+  margin: 0;
+  color: rgba(0, 253, 34, 0.7); /* Dark semi-transparent black */
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background-color: transparent;
+}
+
+.botStatus::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  background: #06bd52;
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+/* --- CHAT AREA --- */
+.chatBox {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #0a0a0a;
+}
+
+.chatBox::-webkit-scrollbar { width: 4px; }
+.chatBox::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+
+.botRow { align-self: flex-start; max-width: 90%; }
+.userRow { align-self: flex-end; max-width: 90%; }
+
+.botBubble {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  padding: 12px;
+  border-radius: 15px 15px 15px 0;
+}
+
+.userBubble {
+  background: #07cf6b;
+  color: #000;
+  padding: 10px 14px;
+  border-radius: 15px 15px 0 15px;
+  font-weight: 500;
+
+}
+
+.msgText {
+  font-size: 13px;
+  line-height: 2;
+  margin: 0;
+  color: #efefef;
+  background-color: transparent;
+  word-break: break-word;
+}
+
+.msgText a {
+  text-decoration: none;
+  font-weight: 500;
+  word-break: break-all;   /* prevents long email overflow */
+  font-size: 13px;
+  background: rgba(7, 207, 107, 0.05);
+  color: #07cf6b;
+  border: 1px solid #07cf6b;
+  padding: 8px 12px;
+    border-radius: 10px;
+
+}
+
+.msgText a:hover {
+  text-decoration: underline;
+}
+
+
+.userBubble .msgText { color: #000; }
+
+/* --- BUTTONS --- */
+.optionBtn {
+  display: block;
+  width: 100%;
+  background: rgba(7, 207, 107, 0.05);
+  color: #07cf6b;
+  border: 1px solid #07cf6b;
+  padding: 8px 12px;
+  margin-top: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: left;
+  transition: all 0.2s;
+}
+
+.optionBtn:hover {
+  background: #07cf6b;
+  color: #000;
+}
+
+/* --- BOTTOM BAR --- */
+.bottomBar { padding: 12px; background: #111; border-top: 1px solid #333; }
+.dummyInput {
+  background: #222;
+  color: #888;
+  font-size: 12px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+
+
+
+
+
+
+/* --- MOBILE & TABLET RESPONSIVENESS --- */
+
+@media screen and (max-width: 768px) {
+  .chatbotWrapper {
+    bottom: 15px; /* Bring it closer to the edge on mobile */
+    right: 15px;
+  }
+
+  .launcher {
+    width: 50px; /* Slightly smaller button for mobile */
+    height: 50px;
+  }
+
+  .floatingWindow {
+    width: calc(100vw - 30px); /* 15px gap on both sides */
+    height: 60vh; /* Takes up 60% of screen height */
+    max-height: 500px;
+    bottom: 65px; /* Adjust based on launcher size */
+    border-radius: 12px; /* Slightly tighter corners for mobile */
+  }
+
+  /* Make buttons bigger for easier tapping on mobile */
+  .optionBtn {
+    padding: 12px;
+    font-size: 13px;
+    margin-top: 12px;
+  }
+
+  .header {
+    padding: 10px 12px;
+    min-height: 55px;
+  }
+}
+
+/* For very small phones */
+@media screen and (max-width: 480px) {
+  .floatingWindow {
+    width: calc(100vw - 20px);
+    right: -5px; /* Center it better if needed */
+    height: 70vh; 
+  }
+}

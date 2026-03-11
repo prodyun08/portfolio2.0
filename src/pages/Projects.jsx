@@ -1,71 +1,72 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { supabase } from '../supabaseClient';
 import styles from '../moduledotcss/Projects.module.css';
-import Fileopen from '../assets/clip-open.svg'; 
 import Folder from '../assets/folder.svg';
 import Gitrepo from '../assets/github-repo.svg';
+import Fileopen from '../assets/clip-open.svg';
+
+
+// ADD AND EXPORT THIS ARRAY
+export const myProjects = [
+  {
+    id: 1,
+    title: "Project One",
+    description: "Description of project one.",
+    tech: ["React", "Supabase"],
+    github_link: "#",
+    live_link: "#"
+  },
+  {
+    id: 2,
+    title: "Project Two",
+    description: "Description of project two.",
+    tech: ["JavaScript", "CSS"],
+    github_link: "#",
+    live_link: "#"
+  },
+  {
+    id: 3,
+    title: "Project Three",
+    description: "Description of project three.",
+    tech: ["Python", "Flask"],
+    github_link: "#",
+    live_link: "#"
+  }
+];
 
 const Projects = () => {
-  const myProjects = [
-    {
-      title: "Online Exam System",
-      description: "Project 1 under Php-CSS-Js-Django-SQLite3 coding.",
-      tech: ["Php", "Python", "JavaScript"],
-      githubLink: "https://github.com/yourusername/project-repo", // Add GitHub link
-      liveLink: "https://your-live-demo.com" // Add External link
-    },
-    {
-      title: "Online Exam System",
-      description: "Project 1 under Php-CSS-Js-Django-SQLite3 coding.",
-      tech: ["Php", "Python", "JavaScript"],
-      githubLink: "https://github.com/yourusername/project-repo", // Add GitHub link
-      liveLink: "https://your-live-demo.com" // Add External link
-    },
-    {
-      title: "Online Exam System",
-      description: "Project 1 under Php-CSS-Js-Django-SQLite3 coding.",
-      tech: ["Php", "Python", "JavaScript"],
-      githubLink: "https://github.com/yourusername/project-repo", // Add GitHub link
-      liveLink: "https://your-live-demo.com" // Add External link
-    },
-    // Add more projects here
-  ];
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const { data } = await supabase.from('projects').select('*').order('created_at', { ascending: false });
+      if (data) setProjects(data);
+    };
+    fetchProjects();
+  }, []);
 
   return (
     <section id='Projects' className={styles.projects}>
       <h2>Projects</h2>
       <div className={styles.projectList}>
-        {myProjects.map((project, index) => (
-          <div key={index} className={styles.projectItem}>
-            
-            {/* Top Icon Row */}
+        {projects.map((project) => (
+          <div key={project.id} className={styles.projectItem}>
             <div className={styles.topIcons}>
               <img src={Folder} alt="Folder" className={styles.folderIcon} />
               <div className={styles.actionIcons}>
-    {/* GitHub Link */}
-    <a href={project.githubLink} target="_blank" rel="noopener noreferrer" style={{ backgroundColor: 'transparent' }}>
-      <img src={Gitrepo} alt="GitHub" />
-    </a>
-    
-    {/* External/Live Preview Link */}
-    <a href={project.liveLink} target="_blank" rel="noopener noreferrer" style={{ backgroundColor: 'transparent' }}>
-      <img src={Fileopen} alt="External Link" />
-    </a>
-</div>
+                <a href={project.github_link} className={styles.iconLink}><img src={Gitrepo} alt="GitHub" /></a>
+                <a href={project.live_link} className={styles.iconLink}><img src={Fileopen} alt="External" /></a>
+              </div>
             </div>
-
-            {/* Content */}
             <div className={styles.details}>
               <h3>{project.title}</h3>
               <p className={styles.description}>{project.description}</p>
             </div>
-
-            {/* Tech Tags */}
             <div className={styles.techStack}>
-              {project.tech.map((skill, i) => (
+              {project.tech?.map((skill, i) => (
                 <span key={i} className={styles.techTag}>{skill}</span>
               ))}
             </div>
-
           </div>
         ))}
       </div>

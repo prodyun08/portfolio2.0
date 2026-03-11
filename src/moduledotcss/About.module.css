@@ -1,6 +1,7 @@
 /* fonts add section  */
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 
 
@@ -64,9 +65,17 @@
 
 }
 .name{
-    color: var(--green-color);
+    /* color: var(--green-color); */
     font-size: 50px;
-    font-family: "Lato", system-ui, sans-serif
+    font-family: "Lato", system-ui, sans-serif;
+    background: linear-gradient(180deg, #969292 30%, #2ED59E 100%);
+    /* Clips the gradient to the text only */
+  -webkit-background-clip: text;
+  background-clip: text;
+    /* Makes the default text color transparent so the gradient shows */
+  -webkit-text-fill-color: transparent;
+    line-height: 1.2;
+  font-weight: bold;
 ;
 
 }
@@ -106,10 +115,10 @@
     margin: 0 auto 20px auto; /* "auto" left/right centers the GIF specifically */
 }
 .titleAbout {
-    color: var(--title-color);
+    color: var(--text-color);
     font-size: 26px;
     font-family: "Lato", sans-serif;
-    /* margin-top: 20px; */
+    margin-top: 20px;
     text-align: left; /* Explicitly align text left */
     width: 100%;      /* Ensures the text box spans the width to allow alignment */
 }
@@ -122,7 +131,6 @@
     text-align: left;
     width: 100%;
     margin-top: 10px;
-    color: var(--dec-color);
     text-align: justify;
 }
 
@@ -183,6 +191,10 @@
     text-decoration: none; /* Remove default underline */
     border-bottom: 2px dashed transparent; /* Pre-size the border to prevent layout jumping */
     padding-bottom: 5px; /* This creates the "gap" or offset */
+    color: var(--green-color);
+    font-style: normal;
+    font-family: "Roboto", sans-serif;
+
 }
 .BlogsTitle:hover {
     color: var(--green-color);

@@ -26,17 +26,9 @@ const Dashboard = () => {
   };
   
   useEffect(() => {
-    const checkUser = () => {
-      const isAuth = localStorage.getItem('isLocalAuth');
-      if (isAuth !== 'true') {
-        navigate('/login');
-      } else {
-        setLoading(false);
-        fetchPosts();
-      }
-    };
-    checkUser();
-  }, [navigate]);
+  setLoading(false);
+  fetchPosts();
+}, []);
 
   const fetchPosts = async () => {
     const { data } = await supabase.from('blog_posts').select('*').order('created_at', { ascending: false });
@@ -83,10 +75,10 @@ const Dashboard = () => {
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('isLocalAuth'); // Clear local auth
-    navigate('/login'); // Redirect to login
-  };
+  // const handleLogout = () => {
+  //   localStorage.removeItem('isLocalAuth'); // Clear local auth
+  //   navigate('/login'); // Redirect to login
+  // };
 
   const filteredPosts = posts.filter(post => 
     post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -100,12 +92,12 @@ const Dashboard = () => {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
         <h2>{editingId ? "Edit Post" : "Blog Dashboard"}</h2>
         {/* LOGOUT BUTTON ADDED HERE */}
-        <button 
+        {/* <button 
           onClick={handleLogout} 
           style={{ background: '#ff4444', color: 'white', padding: '8px 15px', border: 'none', cursor: 'pointer', borderRadius: '5px' }}
         >
           Logout
-        </button>
+        </button> */}
       </div>
       
       <form onSubmit={handleSavePost} style={{ display: 'flex', flexDirection: 'column', gap: '15px', background: '#111', padding: '20px', borderRadius: '10px' }}>

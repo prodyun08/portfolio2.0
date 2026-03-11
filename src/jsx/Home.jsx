@@ -1,16 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'; // Added useState and useEffect
+import { supabase } from '../supabaseClient'; // Import supabase
 import styles from '../moduledotcss/Home.module.css';
+import projectStyles from '../moduledotcss/Projects.module.css';
+// Import Blog styles (reusing the ones from About.module.css as seen in your Blogs.jsx)
+import blogStyles from '../moduledotcss/About.module.css'; 
+import CalendarIcon from '../assets/calendar.svg';
 import BrickScene from './BrickScene';
 import fingerprintSrc from '../assets/iconFingerprint.svg';
 import Autodesk from '../assets/autodesk.svg';
 import Adobe from '../assets/adobe-.svg';
 import Microsoft from '../assets/microsoft-office.svg';
 import Staad from '../assets/staad-software.svg';
-import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
+import Folder from '../assets/folder.svg';
+import { Link, useNavigate } from 'react-router-dom'; // Added useNavigate
+import { myProjects } from '../pages/Projects';
+import Chatbot from '../pages/Chatbot'; // Importing the Chatbot component
 
 
 const Home = () => {
+  const [latestBlogs, setLatestBlogs] = useState([]);
+  const navigate = useNavigate();
+
+  // 1. Fetch Latest 5 Blogs from Supabase
+  useEffect(() => {
+    const fetchLatestBlogs = async () => {
+      const { data } = await supabase
+        .from('blog_posts')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .limit(5); // Only get the latest 5
+      if (data) setLatestBlogs(data);
+    };
+    fetchLatestBlogs();
+  }, []);
+
+  const latestProjects = myProjects.slice(0, 3);
+
+
+
   return (
     <>
     <section id='home' className={styles.hero}>
@@ -67,12 +94,66 @@ const Home = () => {
 </div>
       </div>
     </section>
-    <section>
-      <div className={styles.projects}>
-    
-        
-      </div>
-    </section>
+    <section className={projectStyles.projects}>
+        <h2 style={{ textAlign: 'center', marginBottom: '30px' }}>Latest Projects</h2>
+        <div className={projectStyles.projectList}>
+          {latestProjects.map((project, index) => (
+            <div key={index} className={projectStyles.projectItem}>
+              <div className={projectStyles.topIcons}>
+                <img src={Folder} alt="Folder" className={projectStyles.folderIcon} />
+              </div>
+              <div className={projectStyles.details}>
+                <h3>{project.title}</h3>
+                <p className={projectStyles.description}>{project.description}</p>
+              </div>
+              <div className={projectStyles.techStack}>
+                {project.tech.slice(0, 2).map((skill, i) => (
+                  <span key={i} className={projectStyles.techTag}>{skill}</span>
+                ))}
+              </div>
+              
+            </div>
+            
+          ))}
+        </div>
+        <div className={projectStyles.viewProjectContainer}>
+  <Link className={styles.more} to="/projects">
+    <p>More</p>
+    <i className="ri-arrow-right-long-line"></i>
+  </Link>
+</div>
+      </section>
+
+      {/* 2. ADD LATEST BLOGS SECTION HERE */}
+      <section className={blogStyles.Blogs} style={{ marginTop: '60px' }}>
+        <h2 className={blogStyles.titleAbout} style={{ textAlign: 'center' }}>Latest Blogs</h2>
+        {latestBlogs.map(post => (
+          <div key={post.id} className={blogStyles.BlogContent}>
+            <h2 
+              className={blogStyles.BlogsTitle} 
+              onClick={() => navigate(`/blog/${post.slug}`)}
+            >
+              {post.title}
+            </h2>
+            <p className={blogStyles.BlogDate}>
+              <img src={CalendarIcon} alt="calendar" style={{ width: '20px', marginRight: '5px' }} /> 
+              {new Date(post.created_at).toLocaleDateString()}
+            </p>
+            <p className={blogStyles.BlogDescription}>
+              {post.description}
+              {"\u00A0"}
+              <Link to={`/blog/${post.slug}`} className={blogStyles.Readmore}>Read More</Link>
+            </p>
+          </div>
+        ))}
+        <div className={projectStyles.viewProjectContainer}>
+  <Link className={styles.more} to="/Blogs">
+    <p>View all Blogs</p>
+    <i className="ri-arrow-right-long-line"></i>
+  </Link>
+</div>
+      </section>
+    <Chatbot/>
     </>
   );
 };
