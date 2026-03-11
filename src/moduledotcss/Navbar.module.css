@@ -11,19 +11,24 @@ backdrop-filter: blur(10px);
 }
 
 .nav {
-    position: fixed;   /* ADD THIS */
-    top: 0;            /* ADD THIS */
-    left: 0;           /* ADD THIS */
-    width: 100%;       /* ADD THIS */
-    z-index: 1000;     /* ADD THIS */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
     height: 70px;
     display: flex;
     align-items: center;
     padding: 0 5%;
-    border-bottom: 1px solid #333;
-    background-color: #000;
-}
-
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+    
+    /* Transparent background for blur effect */
+    background-color: rgba(0, 0, 0, 0.6) !important; 
+    backdrop-filter: blur(12px); /* Glassmorphism effect */
+    -webkit-backdrop-filter: blur(12px); /* Support for Safari */
+    
+    transition: transform 0.35s ease-in-out;
+}       
 .nav {
   transition: transform 0.35s ease-in-out;
 }
@@ -95,14 +100,14 @@ backdrop-filter: blur(10px);
 .social a {
     text-decoration: none;
     border-radius: 10px; /* Softer rounded corners */
-    padding: 10px 20px;  /* Better vertical/horizontal balance */
-    font-size: 16px;
+    padding: 10px 20px;  
     font-weight: 500;
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    font-size: 20px;
 }
 
 
@@ -182,34 +187,43 @@ backdrop-filter: blur(10px);
         display: none; 
         flex-direction: column;
         position: absolute;
-        top: 70px; /* Use the exact height of your navbar for a perfect snap */
+        top: 70px; /* Snaps to bottom of nav */
         left: 0;
         width: 100%;
-        background-color: #000;
-        padding: 30px 0; /* More padding makes it look premium */
-        gap: 2rem;
-        border-bottom: 1px solid #333; 
+        height: calc(100vh - 70px); /* Fill remaining screen height */
+        background-color: rgba(0, 0, 0, 0.9); /* Darker overlay for mobile */
+        backdrop-filter: blur(15px);
+        padding: 40px 20px; /* Uniform padding on sides */
+        gap: 2.5rem;
         z-index: 100;
     }
 
-.navContent.active {
+    .navContent.active {
         display: flex;
     }
+
 .links {
         flex-direction: column;
         gap: 1.5rem;
-        align-items: flex-start; /* Keeps them aligned to the left of the screen */
-        padding-left: 10%;      /* Gives them a consistent indent */
-        margin-right: 0;        /* IMPORTANT: Removes the desktop "push" effect */
+        align-items: center; /* Centers the text links */
         width: 100%;
+        margin-right: 0;
+        padding-left: 0; /* Clear previous indent */
+    }
+.social {
+        flex-direction: column; /* Stack buttons vertically */
+        width: 100%;
+        padding-left: 0; /* Clear previous indent */
+        gap: 1rem;
+        align-items: center;
+    }
+.social a {
+        width: 90%; 
+        max-width: 300px; /* Prevents buttons from being too wide on tablets */
+        margin: 0 !important; /* Forces removal of any "automatic" padding/margin */
+        justify-content: center;
     }
 
-.social {
-        width: 100%;
-        justify-content: flex-start; /* Align buttons with the links */
-        padding-left: 10%;
-        padding-bottom: 20px;
-    }
 
     /* Animation for X */
     .barOpen:nth-child(1) { transform: translateY(7px) rotate(45deg); }

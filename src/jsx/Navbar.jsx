@@ -11,11 +11,13 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScroll = window.scrollY;
-      if (currentScroll <= 50) {
-        setShow(true);
-        return;
-      }
+      if (isOpen) return; 
+
+    const currentScroll = window.scrollY;
+    if (currentScroll <= 50) {
+      setShow(true);
+      return;
+    }
       if (currentScroll <= 150 && currentScroll < lastScrollRef.current) {
         setShow(true);
       } else {
@@ -24,10 +26,9 @@ const Navbar = () => {
       lastScrollRef.current = currentScroll;
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
+window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, [isOpen]); // Add isOpen to dependency array
   return (
     <nav className={`${styles.nav} ${!show ? styles.navHidden : ''}`}>
       <div className={styles.leftSection}>
