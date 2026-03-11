@@ -6,34 +6,6 @@ import Gitrepo from '../assets/github-repo.svg';
 import Fileopen from '../assets/clip-open.svg';
 
 
-// ADD AND EXPORT THIS ARRAY
-export const myProjects = [
-  {
-    id: 1,
-    title: "Project One",
-    description: "Description of project one.",
-    tech: ["React", "Supabase"],
-    github_link: "#",
-    live_link: "#"
-  },
-  {
-    id: 2,
-    title: "Project Two",
-    description: "Description of project two.",
-    tech: ["JavaScript", "CSS"],
-    github_link: "#",
-    live_link: "#"
-  },
-  {
-    id: 3,
-    title: "Project Three",
-    description: "Description of project three.",
-    tech: ["Python", "Flask"],
-    github_link: "#",
-    live_link: "#"
-  }
-];
-
 const Projects = () => {
   const [projects, setProjects] = useState([]);
 

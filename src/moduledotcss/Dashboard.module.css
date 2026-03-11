@@ -3,9 +3,8 @@
   min-height: 100vh;
   background: #000;
   color: white;
-  padding-top: 70px; /* Space for Navbar */
+  padding-top: 70px;
 }
-
 .sidebar {
   width: 250px;
   border-right: 2px solid #333;
@@ -13,7 +12,17 @@
   flex-direction: column;
   padding: 20px;
   gap: 15px;
+  flex-shrink: 0;
 }
+.contentArea {
+
+  flex: 1;
+  padding: 40px;
+  width: 100%;
+
+}
+
+
 
 .sideBtn {
   padding: 15px;
@@ -34,10 +43,6 @@
   cursor: pointer;
 }
 
-.contentArea {
-  flex: 1;
-  padding: 40px;
-}
 
 .profileGrid {
   max-width: 600px;
@@ -154,3 +159,280 @@
   transform: scale(1.05);
   background: #07cf6b;
 }
+
+/* src/moduledotcss/Dashboard.module.css */
+.container {
+  padding: 0 20px;
+  max-width: 800px;
+  color: white;
+  position: relative;
+  margin: 0 auto;
+}
+
+.projectTitle{
+  font-size: 28px;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: #111;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #333;
+}
+
+.inputField {
+  padding: 12px;
+  background: #1a1a1a;
+  border: 1px solid #444;
+  color: white;
+  border-radius: 6px;
+}
+
+.submitBtn {
+  background: #07cf6b;
+  padding: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 6px;
+  transition: transform 0.2s;
+}
+
+.submitBtn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.cancelBtn {
+  background: #444;
+  color: white;
+  padding: 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.projectList {
+  margin-top: 40px;
+}
+
+.projectItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #222;
+  background: rgba(255, 255, 255, 0.02);
+  margin-bottom: 5px;
+  border-radius: 4px;
+}
+.buttonGroup {
+    color: #000;
+    display: flex;
+  gap: 35px; /* Adds consistent space between buttons */
+  background: transparent; /* Changed from #111 to match modern feel */
+  width: 100%;
+  }
+
+
+.projectActions button {
+  background: #545554;
+  padding: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 6px;
+  transition: transform 0.2s;}
+
+/* Toast Notification */
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+  z-index: 1000;
+  font-weight: bold;
+  animation: slideIn 0.3s ease-out;
+}
+
+.success { background-color: #07cf6b; color: #000; }
+.error { background-color: #ff4444; color: #fff; }
+
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* --- UPDATED TOAST: Centered on screen --- */
+.toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centers exactly in the middle */
+  padding: 20px 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+  z-index: 2000;
+  font-weight: bold;
+  text-align: center;
+  min-width: 280px;
+  animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+  from { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+  to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+
+  .adminWrapper {
+    flex-direction: column; /* Stack sidebar on top */
+  }
+
+.sidebar {
+    width: 100%;
+    height: auto;
+    flex-direction: row; /* Horizontal menu */
+    overflow-x: auto; /* Scrollable if text is long */
+    border-right: none;
+    border-bottom: 1px solid #333;
+    padding: 12px 10px;
+    gap: 8px;
+    position: sticky;
+    top: 60px; /* Adjust based on your Navbar height */
+    background: #000;
+    z-index: 10;
+    /* Hide scrollbar for cleaner look */
+    scrollbar-width: none; 
+  }
+.sidebar::-webkit-scrollbar {
+    display: none;
+  }
+
+.sideBtn, .activeBtn {
+    flex: 0 0 auto; /* Don't stretch, let them fit the text */
+    padding: 6px 12px;
+    font-size: 13px; /* Smaller font size for mobile */
+    border-radius: 4px;
+    white-space: nowrap; /* Keep text on one line */
+  }
+.contentArea {
+    padding: 20px 15px;
+  }
+
+  .contentArea h2 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+
+  /* Make form labels and inputs smaller for better fit */
+  .contentArea input, 
+  .contentArea textarea, 
+  .contentArea button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+
+  /* Adjust social link grid on mobile */
+  .socialInputs {
+    grid-template-columns: 1fr; /* Stack social inputs vertically */
+  }
+
+.logoutBtn {
+    margin-top: 0;
+    margin-left: auto; /* Push logout to the far right */
+    background-color: transparent;
+    border: 1px solid #ff4444;
+    color: #ff4444;
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+  
+  .container {
+    padding: 80px 15px; /* Less padding on mobile */
+  }
+
+  .projectTitle {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .formContainer {
+    padding: 15px;
+    gap: 10px;
+  }
+
+  /* Stack buttons on top of each other on mobile */
+  .buttonGroup {
+    color: #000;
+    display: flex;
+  gap: 35px; /* Adds consistent space between buttons */
+  background: transparent; /* Changed from #111 to match modern feel */
+  width: 100%;
+  }
+
+  .submitBtn, .cancelBtn {
+    width: 100%;
+    padding: 15px; 
+  }
+  
+
+  /* Stack project list items */
+  .projectItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 15px;
+  }
+
+  .projectItem div {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .projectItem{
+    display: flex;
+    flex-direction: column;
+  }  
+
+  .projectItem button {
+    flex: 1; /* Buttons take equal width on mobile */
+    padding: 10px;
+    font-size: 14px;
+  }
+  .projectItem span{
+    font-size: 16px;
+  }
+  .projectItemTitle{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+}
+
+
+/* Extra small screens (Phones) */
+@media (max-width: 480px) {
+  .sideBtn, .activeBtn {
+    font-size: 12px; /* Even smaller font for tiny screens */
+    padding: 5px 10px;
+  }
+}
+
+
+
+
+
+/* //////////// */
+

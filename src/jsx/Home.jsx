@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react'; // Added useState and useEffect
-import { supabase } from '../supabaseClient'; // Import supabase
+import React, { useState, useEffect } from 'react';
+import { supabase } from '../supabaseClient';
 import styles from '../moduledotcss/Home.module.css';
 import projectStyles from '../moduledotcss/Projects.module.css';
-// Import Blog styles (reusing the ones from About.module.css as seen in your Blogs.jsx)
 import blogStyles from '../moduledotcss/About.module.css'; 
 import CalendarIcon from '../assets/calendar.svg';
 import BrickScene from './BrickScene';
@@ -12,29 +11,42 @@ import Adobe from '../assets/adobe-.svg';
 import Microsoft from '../assets/microsoft-office.svg';
 import Staad from '../assets/staad-software.svg';
 import Folder from '../assets/folder.svg';
-import { Link, useNavigate } from 'react-router-dom'; // Added useNavigate
-import { myProjects } from '../pages/Projects';
-import Chatbot from '../pages/Chatbot'; // Importing the Chatbot component
+import { Link, useNavigate } from 'react-router-dom';
+// REMOVED: import { myProjects } from '../pages/Projects'; <--- Delete this line
+import Chatbot from '../pages/Chatbot';
+
+
 
 
 const Home = () => {
   const [latestBlogs, setLatestBlogs] = useState([]);
+  const [latestProjects, setLatestProjects] = useState([]); // Added state for dynamic projects
   const navigate = useNavigate();
 
-  // 1. Fetch Latest 5 Blogs from Supabase
   useEffect(() => {
+    // Fetch Latest Blogs
     const fetchLatestBlogs = async () => {
       const { data } = await supabase
         .from('blog_posts')
         .select('*')
         .order('created_at', { ascending: false })
-        .limit(5); // Only get the latest 5
+        .limit(5);
       if (data) setLatestBlogs(data);
     };
-    fetchLatestBlogs();
-  }, []);
 
-  const latestProjects = myProjects.slice(0, 3);
+    // Fetch Latest Projects from Database
+    const fetchLatestProjects = async () => {
+      const { data } = await supabase
+        .from('projects')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .limit(3); // Shows only the top 3 on home page
+      if (data) setLatestProjects(data);
+    };
+
+    fetchLatestBlogs();
+    fetchLatestProjects();
+  }, []);
 
 
 

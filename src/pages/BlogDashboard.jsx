@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../supabaseClient';
 import { useNavigate } from 'react-router-dom';
+import styles from '../moduledotcss/Dashboard.module.css';
+
 
 const Dashboard = () => {
   const [posts, setPosts] = useState([]);
@@ -88,7 +90,7 @@ const Dashboard = () => {
   if (loading) return <div style={{ color: 'white', padding: '100px' }}>Loading...</div>;
 
   return (
-    <div style={{ padding: '100px 20px', maxWidth: '900px', margin: '0 auto', color: 'white' }}>
+    <div style={{ padding: '10px 20px', maxWidth: '900px', margin: '0 auto', color: 'white',}}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
         <h2>{editingId ? "Edit Post" : "Blog Dashboard"}</h2>
         {/* LOGOUT BUTTON ADDED HERE */}
@@ -120,18 +122,20 @@ const Dashboard = () => {
       </form>
 
       <div style={{ marginTop: '50px' }}>
-        <h3>Manage Posts</h3>
+        <h3 style={{ marginBottom: '30px' }}>Manage Posts</h3>
         <input type="text" placeholder="Search..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} style={{ width: '100%', padding: '10px', marginBottom: '20px', background: '#222', color: 'white', border: '1px solid #444' }} />
         
         {filteredPosts.map(post => (
           <div key={post.id} style={{ display: 'flex', justifyContent: 'space-between', padding: '15px', background: '#111', marginBottom: '10px', border: '1px solid #333' }}>
-            <div>
-              <div style={{ color: '#07cf6b', fontWeight: 'bold' }}>{post.title}</div>
-              <div style={{ fontSize: '12px' }}>By {post.author}</div>
+            <div style={{ display: 'flex', flexDirection: 'column' , background:'rgb(17, 17, 17)', padding: '10px', borderRadius: '5px'}}>
+              <div style={{ color: '#07cf6b', fontWeight: 'bold' ,background: 'rgb(17, 17, 17)'}} className={styles.projectItemTitle}>
+                {post.title}
+              </div>
+              <div style={{ fontSize: '12px' , background: 'rgb(17, 17, 17)'}}>By {post.author}</div>
             </div>
-            <div style={{ display: 'flex', gap: '10px' }}>
-              <button onClick={() => startEdit(post)} style={{ background: '#333', color: 'white', border: 'none', padding: '5px 10px', cursor: 'pointer' }}>Edit</button>
-              <button onClick={() => handleDelete(post.id)} style={{ background: '#800', color: 'white', border: 'none', padding: '5px 10px', cursor: 'pointer' }}>Delete</button>
+            <div className={styles.projectActions} style={{ display: 'flex', gap: '10px', background: 'rgb(17, 17, 17)', padding: '10px', borderRadius: '5px' }}>
+              <button onClick={() => startEdit(post)} style={{ background: '#545554', color: 'white', border: 'none', padding: '10px', cursor: 'pointer', borderRadius: '6px', transition: 'transform 0.2s', fontWeight: 'bold' }}>Edit</button>
+              <button onClick={() => handleDelete(post.id)} style={{ background: '#545554', color: 'red', border: 'none', padding: '10px', cursor: 'pointer', borderRadius: '6px', transition: 'transform 0.2s', fontWeight: 'bold' }}>Delete</button>
             </div>
           </div>
         ))}
