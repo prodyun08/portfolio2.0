@@ -7,12 +7,12 @@
 
 :root {
     --kolapata-color: #b3d300; /* DEFINE KOLAPATA COLOR AS A CSS VARIABLE */
-    --sada-color: #ffffff; /* DEFINE SADA COLOR AS A CSS VARIABLE */
+    --sada-color: #555; /* DEFINE SADA COLOR AS A CSS VARIABLE */
     --holud-color: #ffcc00; /* DEFINE HOLUD COLOR AS A CSS VARIABLE */
     --green-color: #07cf6b; /* DEFINE GREEN COLOR AS A CSS VARIABLE */
     --title-color: #e0dddd; /* DEFINE TITLE COLOR AS A CSS VARIABLE */
-    --dec-color:#b1aeae; /* DEFINE DEC COLOR AS A CSS VARIABLE */
-    --text-color: oklch(92.19% 0 0);
+    --dec-color:#f8e5e5; /* DEFINE DEC COLOR AS A CSS VARIABLE */
+    --text-color: #fff;
 }
 
 
@@ -254,4 +254,22 @@
   display: inline-block;
   transform: rotate(-45deg);
   transition: transform 0.3s ease;
+}
+
+
+@media screen and (max-width: 768px) {
+    .container1{
+        flex-direction: column; /* STACK GREETING AND CLOCK VERTICALLY ON SMALL SCREENS */
+        align-items: center;    /* CENTER CONTENT HORIZONTALLY */
+        gap: 20px;             /* ADD SPACE BETWEEN GREETING AND CLOCK */
+    }
+    .digitalClock {
+    font-family: 'digital-7 mono', monospace;
+    color: var(--kolapata-color); /* KOLAPATA COLOR FOR HIGHLIGHT */
+
+}
+.highlight {
+    font-family: "Bebas Neue", sans-serif;
+    color: var(--kolapata-color); /* KOLAPATA COLOR FOR HIGHLIGHT */
+}
 }

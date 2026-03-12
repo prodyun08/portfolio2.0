@@ -46,6 +46,7 @@ backdrop-filter: blur(10px);
     border-radius: 8px; 
     padding: 5px 10px;
     transition: all 0.3s ease;
+    text-decoration: none;
 }
 
 .logo:hover {
@@ -183,19 +184,27 @@ backdrop-filter: blur(10px);
         display: flex;
     }
 
+    .hamburger span{
+        font-weight: 500;
+    }
 .navContent {
         display: none; 
         flex-direction: column;
         position: absolute;
-        top: 70px; /* Snaps to bottom of nav */
+        top: 70px; 
         left: 0;
         width: 100%;
-        height: calc(100vh - 70px); /* Fill remaining screen height */
-        background-color: rgba(0, 0, 0, 0.9); /* Darker overlay for mobile */
+        height: calc(100vh - 70px);
+        background-color: rgba(0, 0, 0, 0.9); 
         backdrop-filter: blur(15px);
-        padding: 40px 20px; /* Uniform padding on sides */
         gap: 2.5rem;
         z-index: 100;
+        
+        /* FIX STARTS HERE */
+        margin-left: 0; /* Remove the 40px desktop margin */
+        padding: 40px 0; /* Add some top padding so links aren't touching the top */
+        align-items: center; /* Centers the .links and .social containers */
+        justify-content: flex-start; /* Starts items from the top */
     }
 
     .navContent.active {
@@ -205,10 +214,10 @@ backdrop-filter: blur(10px);
 .links {
         flex-direction: column;
         gap: 1.5rem;
-        align-items: center; /* Centers the text links */
+        align-items: center; 
         width: 100%;
-        margin-right: 0;
-        padding-left: 0; /* Clear previous indent */
+        margin-right: 0; /* Remove desktop auto-margin */
+        text-align: center; /* Ensures text is centered */
     }
 .social {
         flex-direction: column; /* Stack buttons vertically */
@@ -216,12 +225,11 @@ backdrop-filter: blur(10px);
         padding-left: 0; /* Clear previous indent */
         gap: 1rem;
         align-items: center;
+        margin-top: 20px; /* Space between links and buttons */
     }
 .social a {
-        width: 90%; 
-        max-width: 300px; /* Prevents buttons from being too wide on tablets */
-        margin: 0 !important; /* Forces removal of any "automatic" padding/margin */
-        justify-content: center;
+        width: 80%; /* Makes buttons consistent width on mobile */
+        max-width: 250px; 
     }
 
 

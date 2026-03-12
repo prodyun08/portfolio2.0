@@ -1,0 +1,46 @@
+.LoginPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 20px;
+}
+
+.loginButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background-color: #24292e; /* GitHub official color */
+  color: #ffffff;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.loginButton:hover {
+  background-color: #2f363d;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+}
+
+.loginButton:active {
+  transform: translateY(0);
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  filter: invert(1); /* Makes a black SVG icon white */
+  background-color: transparent;
+}
+span{
+    background-color: transparent;
+    color: turquoise;
+}

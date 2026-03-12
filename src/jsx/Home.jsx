@@ -80,9 +80,12 @@ const Home = () => {
           and close your gaps to thrive in a GenAI world.
         </p>
 
-        <button className={styles.ctaButton}>
-          Join The Community
-        </button>
+        <button 
+  className={styles.ctaButton} 
+  onClick={() => window.open("https://t.me/the_well_engineer/", "_blank", "noopener,noreferrer")}
+>
+  Join The Community
+</button>
       </div>
     </section>
     <section>

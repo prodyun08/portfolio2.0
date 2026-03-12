@@ -242,8 +242,8 @@ position: fixed;
 
 @media screen and (max-width: 768px) {
   .chatbotWrapper {
-    bottom: 15px; /* Bring it closer to the edge on mobile */
-    right: 15px;
+    bottom: 5px; /* Bring it closer to the edge on mobile */
+    right: -10px; /* Adjust to center better on smaller screens */
   }
 
   .launcher {

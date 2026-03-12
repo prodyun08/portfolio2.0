@@ -38,10 +38,10 @@ window.addEventListener("scroll", handleScroll);
           <span className={isOpen ? styles.barOpen : styles.bar}></span>
         </div>
 
-        <div className={styles.logo}>
-          <h1>Portfolio</h1>
-          <img src={leaningTower} alt="Leaning Tower Icon" className={styles.logoImg} />
-        </div>
+        <Link to="/" className={styles.logo}>
+  <h1>Portfolio</h1>
+  <img src={leaningTower} alt="Leaning Tower Icon" className={styles.logoImg} />
+</Link>
       </div>
 
       <div className={`${styles.navContent} ${isOpen ? styles.active : ''}`}>
@@ -54,7 +54,7 @@ window.addEventListener("scroll", handleScroll);
         </div>
 
         <div className={styles.social}>
-          <a className={styles.devIcon}>
+          <a className={styles.devIcon} onClick={() => window.open('/dashboard')}>
             Learn
             <img src={codeIcon} alt="Code Icon" style={{ marginLeft: '8px', height: '18px' }} />
           </a>
